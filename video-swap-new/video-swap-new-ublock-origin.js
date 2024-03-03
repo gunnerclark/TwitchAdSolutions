@@ -42,7 +42,13 @@ twitch-videoad.js text/javascript
                 super(twitchBlobUrl);
                 return;
             }
-            var jsURL = getWasmWorkerUrl(twitchBlobUrl);
+
+			var jsURL;
+			if (document.URL.includes(`m.twitch`)) {
+				jsURL = `https://m.twitch.tv` + twitchBlobUrl;
+			} else {
+				jsURL = getWasmWorkerUrl(twitchBlobUrl);
+			}
             if (typeof jsURL !== 'string') {
                 super(twitchBlobUrl);
                 return;
