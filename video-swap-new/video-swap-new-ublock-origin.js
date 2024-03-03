@@ -43,12 +43,11 @@ twitch-videoad.js text/javascript
                 return;
             }
 
-			var jsURL;
-			if (document.URL.includes(`m.twitch`)) {
-				jsURL = `https://m.twitch.tv` + twitchBlobUrl;
-			} else {
-				jsURL = getWasmWorkerUrl(twitchBlobUrl);
+			var jsURL = getWasmWorkerUrl(twitchBlobUrl);
+			if (document.URL.includes('m.twitch')) {
+				jsURL = 'https://m.twitch.tv' + twitchBlobUrl;
 			}
+			
             if (typeof jsURL !== 'string') {
                 super(twitchBlobUrl);
                 return;
